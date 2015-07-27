@@ -16,4 +16,4 @@ Adverts extension for phpBB 3.1
 3. To permanently uninstall, click `Delete Data` and then delete the `/ext/bizbink/adverts` directory.
 
 ## License
-[GNU General Public License v2](http://opensource.org/licenses/GPL-2.0)
+[GNU General Public License v2](http://www.gnu.org/licenses/gpl-2.0.en.html)
