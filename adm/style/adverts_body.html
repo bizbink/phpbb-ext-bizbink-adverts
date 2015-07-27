@@ -1,0 +1,320 @@
+<!-- INCLUDE overall_header.html -->
+
+<style>
+    .hide {
+        display:none;
+    }
+</style>
+
+<h1>{L_SETTINGS}</h1>
+
+<form id="acp_board" method="post" action="{U_ACTION}">
+    <fieldset>
+        <legend>Header Advert</legend>
+
+        <dl>
+            <dt><label for="bizbink_adverts_header_advert_type">{L_ACP_BIZBINK_ADVERTS_ADVERT_TYPE}</label></dt>
+            <dd><select id="bizbink_adverts_header_advert_type" name="bizbink_adverts_header_advert_type" onchange="header_avert_type_changed();">
+                    <option value="adsense" <!-- IF BIZBINK_ADVERTS_HEADER_ADVERT_TYPE === "adsense" -->  selected<!-- ENDIF -->>AdSense</option>
+                    <option value="image" <!-- IF BIZBINK_ADVERTS_HEADER_ADVERT_TYPE === "image" -->  selected<!-- ENDIF -->>Image</option>
+                </select>
+            </dd>
+        </dl>
+
+        <dl>
+            <dt><label for="bizbink_adverts_header_advert_display">{L_ACP_BIZBINK_ADVERTS_ADVERT_DISPLAY}</label></dt>
+            <dd><input id="bizbink_adverts_header_advert_display" type="checkbox" name="bizbink_adverts_header_advert_display"<!-- IF BIZBINK_ADVERTS_HEADER_ADVERT_DISPLAY === "on" -->  checked<!-- ENDIF -->></dd>
+        </dl>
+
+        <dl>
+            <dt><label for="bizbink_adverts_header_advert_guest_only">{L_ACP_BIZBINK_ADVERTS_ADVERT_GUEST_ONLY}</label></dt>
+            <dd><input id="bizbink_adverts_header_advert_guest_only" type="checkbox" name="bizbink_adverts_header_advert_guest_only"<!-- IF BIZBINK_ADVERTS_HEADER_ADVERT_GUEST_ONLY === "on" -->  checked<!-- ENDIF -->></dd>
+        </dl>
+
+        <div id="bizbink_adverts_header_advert_adsense_block" class="<!-- IF BIZBINK_ADVERTS_HEADER_ADVERT_TYPE == 'image' -->hide<!-- ENDIF -->">
+            <dl>
+                <dt><label for="bizbink_adverts_header_advert_adsense_client">{L_ACP_BIZBINK_ADVERTS_ADVERT_ADSENSE_CLIENT}</label></dt>
+                <dd><input type="text" id="bizbink_adverts_header_advert_adsense_client" name="bizbink_adverts_header_advert_adsense_client" value="{BIZBINK_ADVERTS_HEADER_ADVERT_ADSENSE_CLIENT}"></dd>
+            </dl>
+            <dl>
+                <dt><label for="bizbink_adverts_header_advert_adsense_slot">{L_ACP_BIZBINK_ADVERTS_ADVERT_ADSENSE_SLOT}</label></dt>
+                <dd><input type="text" id="bizbink_adverts_header_advert_adsense_slot" name="bizbink_adverts_header_advert_adsense_slot" value="{BIZBINK_ADVERTS_HEADER_ADVERT_ADSENSE_SLOT}"></dd>
+            </dl>
+        </div>
+
+        <div id="bizbink_adverts_header_advert_image_block" class="<!-- IF BIZBINK_ADVERTS_HEADER_ADVERT_TYPE == 'adsense' -->hide<!-- ENDIF -->">
+            <dl>
+                <dt><label for="bizbink_adverts_header_advert_image_link">{L_ACP_BIZBINK_ADVERTS_ADVERT_IMAGE_LINK}</label></dt>
+                <dd><textarea id="bizbink_adverts_header_advert_image_link" name="bizbink_adverts_header_advert_image_link">{BIZBINK_ADVERTS_HEADER_ADVERT_IMAGE_LINK}</textarea></dd>
+            </dl>
+
+            <dl>
+                <dt><label for="bizbink_adverts_header_advert_image_location">{L_ACP_BIZBINK_ADVERTS_ADVERT_IMAGE_LOCATION}</label></dt>
+                <dd><textarea id="bizbink_adverts_header_advert_image_location" name="bizbink_adverts_header_advert_image_location">{BIZBINK_ADVERTS_HEADER_ADVERT_IMAGE_LOCATION}</textarea></dd>
+            </dl>
+
+            <dl>
+                <dt><label for="bizbink_adverts_header_advert_image_title">{L_ACP_BIZBINK_ADVERTS_ADVERT_IMAGE_TITLE}</label></dt>
+                <dd><textarea id="bizbink_adverts_header_advert_image_title" name="bizbink_adverts_header_advert_image_title">{BIZBINK_ADVERTS_HEADER_ADVERT_IMAGE_TITLE}</textarea></dd>
+            </dl>
+
+            <dl>
+                <dt><label for="bizbink_adverts_header_advert_image_alt">{L_ACP_BIZBINK_ADVERTS_ADVERT_IMAGE_ALT}</label></dt>
+                <dd><textarea id="bizbink_adverts_header_advert_image_alt" name="bizbink_adverts_header_advert_image_alt">{BIZBINK_ADVERTS_HEADER_ADVERT_IMAGE_ALT}</textarea></dd>
+            </dl>
+
+            <dl>
+                <dt><label for="bizbink_adverts_header_advert_image_width">{L_ACP_BIZBINK_ADVERTS_ADVERT_IMAGE_WIDTH}</label></dt>
+                <dd><textarea id="bizbink_adverts_header_advert_image_width" name="bizbink_adverts_header_advert_image_width">{BIZBINK_ADVERTS_HEADER_ADVERT_IMAGE_WIDTH}</textarea></dd>
+            </dl>
+
+            <dl>
+                <dt><label for="bizbink_adverts_header_advert_image_height">{L_ACP_BIZBINK_ADVERTS_ADVERT_IMAGE_HEIGHT}</label></dt>
+                <dd><textarea id="bizbink_adverts_header_advert_image_height" name="bizbink_adverts_header_advert_image_height">{BIZBINK_ADVERTS_HEADER_ADVERT_IMAGE_HEIGHT}</textarea></dd>
+            </dl>
+        </div>
+    </fieldset>
+
+    <fieldset>    
+        <legend>Forumlist Advert</legend>
+
+        <dl>
+            <dt><label for="bizbink_adverts_forumlist_advert_type">{L_ACP_BIZBINK_ADVERTS_ADVERT_TYPE}</label></dt>
+            <dd><select id="bizbink_adverts_forumlist_advert_type" name="bizbink_adverts_forumlist_advert_type" onchange="forumlist_avert_type_changed();">
+                    <option value="adsense" <!-- IF BIZBINK_ADVERTS_FORUMLIST_ADVERT_TYPE === "adsense" -->  selected<!-- ENDIF -->>AdSense</option>
+                    <option value="image" <!-- IF BIZBINK_ADVERTS_FORUMLIST_ADVERT_TYPE === "image" -->  selected<!-- ENDIF -->>Image</option>
+                </select>
+            </dd>
+        </dl>
+
+        <dl>
+            <dt><label for="bizbink_adverts_forumlist_advert_display">{L_ACP_BIZBINK_ADVERTS_ADVERT_DISPLAY}</label></dt>
+            <dd><input id="bizbink_adverts_forumlist_advert_display" type="checkbox" name="bizbink_adverts_forumlist_advert_display"<!-- IF BIZBINK_ADVERTS_FORUMLIST_ADVERT_DISPLAY === "on" -->  checked<!-- ENDIF -->></dd>
+        </dl>
+
+        <dl>
+            <dt><label for="bizbink_adverts_forumlist_advert_guest_only">{L_ACP_BIZBINK_ADVERTS_ADVERT_GUEST_ONLY}</label></dt>
+            <dd><input id="bizbink_adverts_forumlist_advert_guest_only" type="checkbox" name="bizbink_adverts_forumlist_advert_guest_only"<!-- IF BIZBINK_ADVERTS_FORUMLIST_ADVERT_GUEST_ONLY === "on" -->  checked<!-- ENDIF -->></dd>
+        </dl>
+
+        <div id="bizbink_adverts_forumlist_advert_adsense_block" class="<!-- IF BIZBINK_ADVERTS_FORUMLIST_ADVERT_TYPE == 'image' -->hide<!-- ENDIF -->">
+            <dl>
+                <dt><label for="bizbink_adverts_forumlist_advert_adsense_client">{L_ACP_BIZBINK_ADVERTS_ADVERT_ADSENSE_CLIENT}</label></dt>
+                <dd><input type="text" id="bizbink_adverts_forumlist_advert_adsense_client" name="bizbink_adverts_forumlist_advert_adsense_client" value="{BIZBINK_ADVERTS_FORUMLIST_ADVERT_ADSENSE_CLIENT}"></dd>
+            </dl>
+            <dl>
+                <dt><label for="bizbink_adverts_forumlist_advert_adsense_slot">{L_ACP_BIZBINK_ADVERTS_ADVERT_ADSENSE_SLOT}</label></dt>
+                <dd><input type="text" id="bizbink_adverts_forumlist_advert_adsense_slot" name="bizbink_adverts_forumlist_advert_adsense_slot" value="{BIZBINK_ADVERTS_FORUMLIST_ADVERT_ADSENSE_SLOT}"></dd>
+            </dl>
+        </div>
+
+        <div id="bizbink_adverts_forumlist_advert_image_block" class="<!-- IF BIZBINK_ADVERTS_FORUMLIST_ADVERT_TYPE == 'adsense' -->hide<!-- ENDIF -->">
+            <dl>
+                <dt><label for="bizbink_adverts_forumlist_advert_image_link">{L_ACP_BIZBINK_ADVERTS_ADVERT_IMAGE_LINK}</label></dt>
+                <dd><textarea id="bizbink_adverts_forumlist_advert_image_link" name="bizbink_adverts_forumlist_advert_image_link">{BIZBINK_ADVERTS_FORUMLIST_ADVERT_IMAGE_LINK}</textarea></dd>
+            </dl>
+
+            <dl>
+                <dt><label for="bizbink_adverts_forumlist_advert_image_location">{L_ACP_BIZBINK_ADVERTS_ADVERT_IMAGE_LOCATION}</label></dt>
+                <dd><textarea id="bizbink_adverts_forumlist_advert_image_location" name="bizbink_adverts_forumlist_advert_image_location">{BIZBINK_ADVERTS_FORUMLIST_ADVERT_IMAGE_LOCATION}</textarea></dd>
+            </dl>
+
+            <dl>
+                <dt><label for="bizbink_adverts_forumlist_advert_image_title">{L_ACP_BIZBINK_ADVERTS_ADVERT_IMAGE_TITLE}</label></dt>
+                <dd><textarea id="bizbink_adverts_forumlist_advert_image_title" name="bizbink_adverts_forumlist_advert_image_title">{BIZBINK_ADVERTS_FORUMLIST_ADVERT_IMAGE_TITLE}</textarea></dd>
+            </dl>
+
+            <dl>
+                <dt><label for="bizbink_adverts_forumlist_advert_image_alt">{L_ACP_BIZBINK_ADVERTS_ADVERT_IMAGE_ALT}</label></dt>
+                <dd><textarea id="bizbink_adverts_forumlist_advert_image_alt" name="bizbink_adverts_forumlist_advert_image_alt">{BIZBINK_ADVERTS_FORUMLIST_ADVERT_IMAGE_ALT}</textarea></dd>
+            </dl>
+
+            <dl>
+                <dt><label for="bizbink_adverts_forumlist_advert_image_width">{L_ACP_BIZBINK_ADVERTS_ADVERT_IMAGE_WIDTH}</label></dt>
+                <dd><textarea id="bizbink_adverts_forumlist_advert_image_width" name="bizbink_adverts_forumlist_advert_image_width">{BIZBINK_ADVERTS_FORUMLIST_ADVERT_IMAGE_WIDTH}</textarea></dd>
+            </dl>
+
+            <dl>
+                <dt><label for="bizbink_adverts_forumlist_advert_image_height">{L_ACP_BIZBINK_ADVERTS_ADVERT_IMAGE_HEIGHT}</label></dt>
+                <dd><textarea id="bizbink_adverts_forumlist_advert_image_height" name="bizbink_adverts_forumlist_advert_image_height">{BIZBINK_ADVERTS_FORUMLIST_ADVERT_IMAGE_HEIGHT}</textarea></dd>
+            </dl>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Viewtopic Advert</legend>
+
+        <dl>
+            <dt><label for="bizbink_adverts_viewtopic_advert_type">{L_ACP_BIZBINK_ADVERTS_ADVERT_TYPE}</label></dt>
+            <dd><select id="bizbink_adverts_viewtopic_advert_type" name="bizbink_adverts_viewtopic_advert_type" onchange="viewtopic_avert_type_changed();">
+                    <option value="adsense" <!-- IF BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_TYPE === "adsense" -->  selected<!-- ENDIF -->>AdSense</option>
+                    <option value="image" <!-- IF BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_TYPE === "image" -->  selected<!-- ENDIF -->>Image</option>
+                </select>
+            </dd>
+        </dl>
+
+        <dl>
+            <dt><label for="bizbink_adverts_viewtopic_advert_display">{L_ACP_BIZBINK_ADVERTS_ADVERT_DISPLAY}</label></dt>
+            <dd><input id="bizbink_adverts_viewtopic_advert_display" type="checkbox" name="bizbink_adverts_viewtopic_advert_display"<!-- IF BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_DISPLAY === "on" -->  checked<!-- ENDIF -->></dd>
+        </dl>
+
+        <dl>
+            <dt><label for="bizbink_adverts_viewtopic_advert_guest_only">{L_ACP_BIZBINK_ADVERTS_ADVERT_GUEST_ONLY}</label></dt>
+            <dd><input id="bizbink_adverts_viewtopic_advert_guest_only" type="checkbox" name="bizbink_adverts_viewtopic_advert_guest_only"<!-- IF BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_GUEST_ONLY === "on" -->  checked<!-- ENDIF -->></dd>
+        </dl>
+
+        <div id="bizbink_adverts_viewtopic_advert_adsense_block" class="<!-- IF BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_TYPE == 'image' -->hide<!-- ENDIF -->">
+            <dl>
+                <dt><label for="bizbink_adverts_viewtopic_advert_adsense_client">{L_ACP_BIZBINK_ADVERTS_ADVERT_ADSENSE_CLIENT}</label></dt>
+                <dd><input type="text" id="bizbink_adverts_viewtopic_advert_adsense_client" name="bizbink_adverts_viewtopic_advert_adsense_client" value="{BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_ADSENSE_CLIENT}"></dd>
+            </dl>
+            <dl>
+                <dt><label for="bizbink_adverts_viewtopic_advert_adsense_slot">{L_ACP_BIZBINK_ADVERTS_ADVERT_ADSENSE_SLOT}</label></dt>
+                <dd><input type="text" id="bizbink_adverts_viewtopic_advert_adsense_slot" name="bizbink_adverts_viewtopic_advert_adsense_slot" value="{BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_ADSENSE_SLOT}"></dd>
+            </dl>
+        </div>
+
+        <div id="bizbink_adverts_viewtopic_advert_image_block" class="<!-- IF BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_TYPE == 'adsense' -->hide<!-- ENDIF -->">
+            <dl>
+                <dt><label for="bizbink_adverts_viewtopic_advert_image_link">{L_ACP_BIZBINK_ADVERTS_ADVERT_IMAGE_LINK}</label></dt>
+                <dd><textarea id="bizbink_adverts_viewtopic_advert_image_link" name="bizbink_adverts_viewtopic_advert_image_link">{BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_IMAGE_LINK}</textarea></dd>
+            </dl>
+
+            <dl>
+                <dt><label for="bizbink_adverts_viewtopic_advert_image_location">{L_ACP_BIZBINK_ADVERTS_ADVERT_IMAGE_LOCATION}</label></dt>
+                <dd><textarea id="bizbink_adverts_viewtopic_advert_image_location" name="bizbink_adverts_viewtopic_advert_image_location">{BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_IMAGE_LOCATION}</textarea></dd>
+            </dl>
+
+            <dl>
+                <dt><label for="bizbink_adverts_viewtopic_advert_image_title">{L_ACP_BIZBINK_ADVERTS_ADVERT_IMAGE_TITLE}</label></dt>
+                <dd><textarea id="bizbink_adverts_viewtopic_advert_image_title" name="bizbink_adverts_viewtopic_advert_image_title">{BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_IMAGE_TITLE}</textarea></dd>
+            </dl>
+
+            <dl>
+                <dt><label for="bizbink_adverts_viewtopic_advert_image_alt">{L_ACP_BIZBINK_ADVERTS_ADVERT_IMAGE_ALT}</label></dt>
+                <dd><textarea id="bizbink_adverts_viewtopic_advert_image_alt" name="bizbink_adverts_viewtopic_advert_image_alt">{BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_IMAGE_ALT}</textarea></dd>
+            </dl>
+
+            <dl>
+                <dt><label for="bizbink_adverts_viewtopic_advert_image_width">{L_ACP_BIZBINK_ADVERTS_ADVERT_IMAGE_WIDTH}</label></dt>
+                <dd><textarea id="bizbink_adverts_viewtopic_advert_image_width" name="bizbink_adverts_viewtopic_advert_image_width">{BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_IMAGE_WIDTH}</textarea></dd>
+            </dl>
+
+            <dl>
+                <dt><label for="bizbink_adverts_viewtopic_advert_image_height">{L_ACP_BIZBINK_ADVERTS_ADVERT_IMAGE_HEIGHT}</label></dt>
+                <dd><textarea id="bizbink_adverts_viewtopic_advert_image_height" name="bizbink_adverts_viewtopic_advert_image_height">{BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_IMAGE_HEIGHT}</textarea></dd>
+            </dl>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Other</legend>
+
+        <dl>
+            <dt><label for="bizbink_adverts_custom_css">{L_ACP_BIZBINK_ADVERTS_CUSTOM_CSS}</label></dt>
+            <dd><textarea id="bizbink_adverts_custom_css" name="bizbink_adverts_custom_css">{BIZBINK_ADVERTS_CUSTOM_CSS}</textarea></dd>
+        </dl>
+    </fieldset>
+
+    <fieldset>
+        <p class="submit-buttons">
+            <input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+            <input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" onclick="
+                    reset_header_avert_type();
+                    reset_forumlist_avert_type();
+                    reset_viewtopic_avert_type();" />
+        </p>
+
+        {S_FORM_TOKEN}
+    </fieldset>
+</form>
+<!-- INCLUDE overall_footer.html -->
+
+<script>
+    function header_avert_type_changed() {
+        var bizbink_adverts_header_advert_type = document.getElementById("bizbink_adverts_header_advert_type");
+        var bizbink_adverts_header_advert_image_block = document.getElementById("bizbink_adverts_header_advert_image_block");
+        var bizbink_adverts_header_advert_adsense_block = document.getElementById("bizbink_adverts_header_advert_adsense_block");
+
+        if (bizbink_adverts_header_advert_type.options[bizbink_adverts_header_advert_type.selectedIndex].value === 'adsense') {
+            bizbink_adverts_header_advert_image_block.classList.add('hide');
+            bizbink_adverts_header_advert_adsense_block.classList.remove('hide');
+        } else if (bizbink_adverts_header_advert_type.options[bizbink_adverts_header_advert_type.selectedIndex].value === 'image') {
+            bizbink_adverts_header_advert_adsense_block.classList.add('hide');
+            bizbink_adverts_header_advert_image_block.classList.remove('hide');
+        }
+
+    }
+
+    function reset_header_avert_type() {
+        var bizbink_adverts_header_advert_type = '{BIZBINK_ADVERTS_HEADER_ADVERT_TYPE}';
+        var bizbink_adverts_header_advert_image_block = document.getElementById("bizbink_adverts_header_advert_image_block");
+        var bizbink_adverts_header_advert_adsense_block = document.getElementById("bizbink_adverts_header_advert_adsense_block");
+
+        if (bizbink_adverts_header_advert_type === 'adsense') {
+            bizbink_adverts_header_advert_image_block.classList.add('hide');
+            bizbink_adverts_header_advert_adsense_block.classList.remove('hide');
+        } else if (bizbink_adverts_header_advert_type === 'image') {
+            bizbink_adverts_header_advert_adsense_block.classList.add('hide');
+            bizbink_adverts_header_advert_image_block.classList.remove('hide');
+        }
+    }
+
+    function forumlist_avert_type_changed() {
+        var bizbink_adverts_forumlist_advert_type = document.getElementById("bizbink_adverts_forumlist_advert_type");
+        var bizbink_adverts_forumlist_advert_image_block = document.getElementById("bizbink_adverts_forumlist_advert_image_block");
+        var bizbink_adverts_forumlist_advert_adsense_block = document.getElementById("bizbink_adverts_forumlist_advert_adsense_block");
+
+        if (bizbink_adverts_forumlist_advert_type.options[bizbink_adverts_forumlist_advert_type.selectedIndex].value === 'adsense') {
+            bizbink_adverts_forumlist_advert_image_block.classList.add('hide');
+            bizbink_adverts_forumlist_advert_adsense_block.classList.remove('hide');
+        } else if (bizbink_adverts_forumlist_advert_type.options[bizbink_adverts_forumlist_advert_type.selectedIndex].value === 'image') {
+            bizbink_adverts_forumlist_advert_adsense_block.classList.add('hide');
+            bizbink_adverts_forumlist_advert_image_block.classList.remove('hide');
+        }
+
+    }
+
+    function reset_forumlist_avert_type() {
+        var bizbink_adverts_forumlist_advert_type = '{BIZBINK_ADVERTS_FORUMLIST_ADVERT_TYPE}';
+        var bizbink_adverts_forumlist_advert_image_block = document.getElementById("bizbink_adverts_forumlist_advert_image_block");
+        var bizbink_adverts_forumlist_advert_adsense_block = document.getElementById("bizbink_adverts_forumlist_advert_adsense_block");
+
+        if (bizbink_adverts_forumlist_advert_type === 'adsense') {
+            bizbink_adverts_forumlist_advert_image_block.classList.add('hide');
+            bizbink_adverts_forumlist_advert_adsense_block.classList.remove('hide');
+        } else if (bizbink_adverts_forumlist_advert_type === 'image') {
+            bizbink_adverts_forumlist_advert_adsense_block.classList.add('hide');
+            bizbink_adverts_forumlist_advert_image_block.classList.remove('hide');
+        }
+    }
+
+    function viewtopic_avert_type_changed() {
+        var bizbink_adverts_viewtopic_advert_type = document.getElementById("bizbink_adverts_viewtopic_advert_type");
+        var bizbink_adverts_viewtopic_advert_image_block = document.getElementById("bizbink_adverts_viewtopic_advert_image_block");
+        var bizbink_adverts_viewtopic_advert_adsense_block = document.getElementById("bizbink_adverts_viewtopic_advert_adsense_block");
+
+        if (bizbink_adverts_viewtopic_advert_type.options[bizbink_adverts_viewtopic_advert_type.selectedIndex].value === 'adsense') {
+            bizbink_adverts_viewtopic_advert_image_block.classList.add('hide');
+            bizbink_adverts_viewtopic_advert_adsense_block.classList.remove('hide');
+        } else if (bizbink_adverts_viewtopic_advert_type.options[bizbink_adverts_viewtopic_advert_type.selectedIndex].value === 'image') {
+            bizbink_adverts_viewtopic_advert_adsense_block.classList.add('hide');
+            bizbink_adverts_viewtopic_advert_image_block.classList.remove('hide');
+        }
+
+    }
+
+    function reset_viewtopic_avert_type() {
+        var bizbink_adverts_viewtopic_advert_type = '{BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_TYPE}';
+        var bizbink_adverts_viewtopic_advert_image_block = document.getElementById("bizbink_adverts_viewtopic_advert_image_block");
+        var bizbink_adverts_viewtopic_advert_adsense_block = document.getElementById("bizbink_adverts_viewtopic_advert_adsense_block");
+
+        if (bizbink_adverts_viewtopic_advert_type === 'adsense') {
+            bizbink_adverts_viewtopic_advert_image_block.classList.add('hide');
+            bizbink_adverts_viewtopic_advert_adsense_block.classList.remove('hide');
+        } else if (bizbink_adverts_viewtopic_advert_type === 'image') {
+            bizbink_adverts_viewtopic_advert_adsense_block.classList.add('hide');
+            bizbink_adverts_viewtopic_advert_image_block.classList.remove('hide');
+        }
+    }
+</script>

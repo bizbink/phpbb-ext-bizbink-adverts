@@ -1,0 +1,9 @@
+services:
+    bizbink.adverts.listener:
+        class: bizbink\adverts\event\main_listener
+        arguments:
+            - @template
+            - @config
+            - @user
+        tags:
+            - { name: event.listener }
