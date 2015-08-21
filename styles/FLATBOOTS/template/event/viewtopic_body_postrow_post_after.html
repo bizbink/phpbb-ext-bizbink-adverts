@@ -1,0 +1,26 @@
+<!-- IF postrow.S_FIRST_ROW -->
+<!-- IF BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_TYPE === 'image' -->
+<div class="panel panel-default">
+<div class="panel-body">
+        <a href="{BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_IMAGE_LINK}" target="_blank" title="{BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_IMAGE_TITLE}">
+            <img class="advert" src="{BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_IMAGE_LOCATION}" height="{BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_IMAGE_HEIGHT}" alt="{BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_IMAGE_ALT}"></a>
+</div>
+</div>
+<!-- ENDIF -->
+
+<!-- IF BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_TYPE === 'adsense' -->
+<div class="panel panel-default">
+<div class="panel-body">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="{BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_ADSENSE_CLIENT}"
+             data-ad-slot="{BIZBINK_ADVERTS_VIEWTOPIC_ADVERT_ADSENSE_SLOT}"
+             data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+</div>
+</div>
+<!-- ENDIF -->
+<!-- ENDIF -->
