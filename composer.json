@@ -16,7 +16,7 @@
         "php": ">=5.3.3"
     },
     "extra": {
-        "display-name": "Ads Extension",
+        "display-name": "bizbink Adverts Extension",
         "soft-require": {
             "phpbb/phpbb": ">=3.1.0-RC2,<3.2.*@dev"
         }
